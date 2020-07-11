@@ -1,6 +1,11 @@
 defmodule Core.Utils do
   use Timex
 
+  def binary_to_string(binary) do
+    IO.inspect binary
+    for c <- binary, into: "", do: <<c>>
+  end
+
   def current_date do
     Timex.today
       |> date_to_int

@@ -1,7 +1,23 @@
 defmodule Core.Mnesia do
   use Memento.Table, 
-    attributes: [:id, :term, :result, :country, :language, :date],
-    index: [:term, :country, :language],
+    attributes: [
+      :id,
+      :searchid,
+      :term,
+      :original_term,
+      :result,
+      :country,
+      :language,
+      :platform,
+      :date
+    ],
+    index: [
+      :term,
+      :searchid,
+      :country,
+      :language,
+      :platform
+    ],
     type: :ordered_set,
     autoincrement: true
 
@@ -15,15 +31,19 @@ defmodule Core.Mnesia do
     Memento.Table.create!(Core.Mnesia, disc_copies: @nodes)
   end
 
-  def insert_result(item, country, language) do
+  def insert_result(item, original_term, country, language, platform) do
     with {:ok, term, result} = item do
       Memento.transaction! fn ->
+        current_date = Core.Utils.current_date
         Memento.Query.write(%Core.Mnesia{
-          term:     term,
-          result:   result,
-          country:  country,
-          language: language,
-          date:     Core.Utils.current_date
+          term:          term,
+          original_term: original_term,
+          result:        result,
+          country:       country,
+          language:      language,
+          searchid:      format_search_id(term, country, language, current_date, platform),
+          platform:      platform,
+          date:          current_date
         })
       end
     end
@@ -52,6 +72,11 @@ defmodule Core.Mnesia do
       result = Memento.Query.select(Core.Mnesia, guards)
       length(result) > 0
     end
+  end
+
+  def format_search_id(term, country, language, date, platform) do
+    [term, country, language, date, platform]
+    |> Enum.join("-")
   end
 
 end

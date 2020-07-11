@@ -31,9 +31,9 @@ defmodule Core.Endpoint do
 
   def google(term, country, language) do
     @search_terms
-      |> Enum.map(&  String.replace(&1, "@", term))
-      |> Enum.map(&  call_google(&1, country, language))
-      |> Enum.each(& store_to_mnesia(&1, country, language))
+      |> Enum.map(& String.replace(&1, "@", term))
+      |> Enum.map(& call_google(&1, country, language))
+      |> Enum.map(& store_to_mnesia(&1, term, country, language, "google"))
   end
 
   def call_google(term, country, language) do
@@ -46,21 +46,24 @@ defmodule Core.Endpoint do
 
       {:error, %HTTPoison.Error{reason: reason}} ->
         {:error, reason}
-    end
+
+      _ ->
+        {:error, "Unknown error from HTTPoison"}
+      end
   end
 
   def format_google_uri(term, country \\ "en", language \\ "en") do
     @google_endpoint
       <> URI.encode(term)
       <> @google_queryparams
-      <> "&hl="
+      <> "hl="
       <> String.downcase(country)
       <> "-"
       <> String.upcase(language)
   end
 
   def extract_google_body(response) do
-    response
+    "#{:erlang.binary_to_list(response)}"
       |> safe_json_decode
       |> Enum.at(1)
       |> Enum.map(& 
@@ -85,14 +88,14 @@ defmodule Core.Endpoint do
     end
   end
 
-  def store_to_mnesia(item, country, language) do
+  def store_to_mnesia(item, original_term, country, language, platform) do
     case item do
-      {:ok, term, result} ->
-        Core.Mnesia.insert_result(item, country, language)
+      {:ok, _, result} ->
+        Core.Mnesia.insert_result(item, original_term, country, language, platform)
         {:ok, result}
       _ ->
        IO.inspect item 
-       {:error, "Unknown error"}
+       {:error, "Unknown error while inserting to Mnesia"}
     end
   end
 
