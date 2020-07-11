@@ -22,8 +22,9 @@ defmodule Core.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.6"},
-      {:poison, "~> 3.1"},
-      {:memento, "~> 0.3.1"}
+      {:poison,    "~> 3.1"},
+      {:memento,   "~> 0.3.1"},
+      {:timex,     "~> 3.5"}
     ]
   end
 end

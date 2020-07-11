@@ -3,6 +3,8 @@ defmodule Core.Endpoint do
   @google_endpoint    "https://www.google.com/complete/search?q="
   @google_queryparams "&client=psy-ab&"
   @search_terms [
+    "@",
+
     "what @",    "why @",   "when @",
     "where @",   "how @",   "is @", 
     "who @",     "can @",   "does @",
@@ -22,7 +24,7 @@ defmodule Core.Endpoint do
     "@ a", "@ b", "@ c", "@ d", "@ e",
     "@ f", "@ g", "@ h", "@ i", "@ j",
     "@ k", "@ l", "@ m", "@ n", "@ o",
-    "@ p", "@ q", "@ r", "@ s", "@t ",
+    "@ p", "@ q", "@ r", "@ s", "@ t",
     "@ u", "@ v", "@ w", "@ x", "@ y",
     "@ z"
   ]
@@ -31,7 +33,7 @@ defmodule Core.Endpoint do
     @search_terms
       |> Enum.map(&  String.replace(&1, "@", term))
       |> Enum.map(&  call_google(&1, country, language))
-      |> Enum.each(& store_to_mnesia(&1))
+      |> Enum.each(& store_to_mnesia(&1, country, language))
   end
 
   def call_google(term, country, language) do
@@ -59,8 +61,7 @@ defmodule Core.Endpoint do
 
   def extract_google_body(response) do
     response
-      |> IO.inspect
-      |> Poison.decode!
+      |> safe_json_decode
       |> Enum.at(1)
       |> Enum.map(& 
         &1 
@@ -71,10 +72,24 @@ defmodule Core.Endpoint do
       )
   end
 
-  def store_to_mnesia(item) do
+  def safe_json_decode(json) do
+    case Poison.decode(json) do
+      {:ok, result} ->
+        result
+      {:error, reason} ->
+        IO.puts     "Error while parsing JSON:"
+        IO.inspect  reason
+        %{}
+      _ ->
+        %{}
+    end
+  end
+
+  def store_to_mnesia(item, country, language) do
+    IO.inspect item
     case item do
       {:ok, term, result} ->
-        Core.Mnesia.insert_result(item)
+        Core.Mnesia.insert_result(item, country, language)
       _ ->
        IO.inspect item 
     end
