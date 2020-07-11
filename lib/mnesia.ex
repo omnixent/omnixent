@@ -29,19 +29,25 @@ defmodule Core.Mnesia do
     end
   end
 
-  def check_if_exist?(term) do
+  def check_if_exist?(term, country, language) do
     Memento.transaction! fn ->
-      guards = {:==, :term, term}
+      guards = [
+        {:==, :term,     term},
+        {:==, :country,  country},
+        {:==, :language, language},
+      ]
       result = Memento.Query.select(Core.Mnesia, guards)
       length(result) > 0
     end
   end
 
-  def check_if_exist?(term, date) do
+  def check_if_exist?(term, country, language, date) do
     Memento.transaction! fn ->
       guards = [
-        {:==, :term, term},
-        {:>=, :date, date}
+        {:==, :term,     term},
+        {:==, :country,  country},
+        {:==, :language, language},
+        {:>=, :date,     date}
       ]
       result = Memento.Query.select(Core.Mnesia, guards)
       length(result) > 0

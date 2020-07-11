@@ -86,12 +86,13 @@ defmodule Core.Endpoint do
   end
 
   def store_to_mnesia(item, country, language) do
-    IO.inspect item
     case item do
       {:ok, term, result} ->
         Core.Mnesia.insert_result(item, country, language)
+        {:ok, result}
       _ ->
        IO.inspect item 
+       {:error, "Unknown error"}
     end
   end
 
