@@ -49,28 +49,50 @@ defmodule Core.Mnesia do
     end
   end
 
-  def check_if_exist?(term, country, language) do
+  def check_if_exist(guards) do
     Memento.transaction! fn ->
-      guards = [
-        {:==, :term,     term},
-        {:==, :country,  country},
-        {:==, :language, language},
-      ]
       result = Memento.Query.select(Core.Mnesia, guards)
-      length(result) > 0
+      case length(result) > 0 do
+        true ->
+          {:true, result}
+        false ->
+          {:false}
+      end
     end
   end
 
-  def check_if_exist?(term, country, language, date) do
+  def check_if_exist(term, country, language) do
     Memento.transaction! fn ->
       guards = [
-        {:==, :term,     term},
-        {:==, :country,  country},
-        {:==, :language, language},
-        {:>=, :date,     date}
+        {:==, :original_term, term},
+        {:==, :country,       country},
+        {:==, :language,      language},
       ]
       result = Memento.Query.select(Core.Mnesia, guards)
-      length(result) > 0
+      case length(result) > 0 do
+        true ->
+          {:true, result}
+        false ->
+          {:false}
+      end
+    end
+  end
+
+  def check_if_exist(term, country, language, date) do
+    Memento.transaction! fn ->
+      guards = [
+        {:==, :original_term, term},
+        {:==, :country,       country},
+        {:==, :language,      language},
+        {:>=, :date,          date}
+      ]
+      result = Memento.Query.select(Core.Mnesia, guards)
+      case length(result) > 0 do
+        true ->
+          {:true, result}
+        false ->
+          {:false}
+      end
     end
   end
 

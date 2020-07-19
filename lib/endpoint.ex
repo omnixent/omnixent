@@ -2,38 +2,21 @@ defmodule Core.Endpoint do
 
   @google_endpoint    "https://www.google.com/complete/search?q="
   @google_queryparams "&client=psy-ab&"
-  @search_terms [
-    "@",
 
-    "what @",    "why @",   "when @",
-    "where @",   "how @",   "is @", 
-    "who @",     "can @",   "does @",
-    "doesn't @", "with @",  "without @",
-    "for @",     "to @",    "from @",
-    "which @",
+  def google(term, country \\ "en", language \\ "en") do
 
-    "@ what",    "why @",   "@ when",
-    "@ where",   "@ how",   "@ is",
-    "@ who",     "@ can",   "@ does",
-    "@ doesn't", "@ with",  "@ without",
-    "@ for",     "@ to",    "@ from",
-
-    "@ vs",      "@ versus", "@like",
-    "@ and",     "@ or",
-
-    "@ a", "@ b", "@ c", "@ d", "@ e",
-    "@ f", "@ g", "@ h", "@ i", "@ j",
-    "@ k", "@ l", "@ m", "@ n", "@ o",
-    "@ p", "@ q", "@ r", "@ s", "@ t",
-    "@ u", "@ v", "@ w", "@ x", "@ y",
-    "@ z"
-  ]
-
-  def google(term, country, language) do
-    @search_terms
-      |> Enum.map(& String.replace(&1, "@", term))
-      |> Enum.map(& call_google(&1, country, language))
-      |> Enum.map(& store_to_mnesia(&1, term, country, language, "google"))
+    case Core.Mnesia.check_if_exist(term, country, language, Core.Utils.last_week_day) do
+      {:true, result} ->
+        result
+      _ ->
+        Core.Languages.read_languages_file(language)
+          |> Enum.map(& String.replace(&1, "@", term))
+          |> Enum.map(& call_google(&1, country, language))
+          |> Enum.map(& store_to_mnesia(&1, term, country, language, "google"))
+        with {:true, result} = Core.Mnesia.check_if_exist(term, country, language, Core.Utils.today) do
+          result
+        end
+    end
   end
 
   def call_google(term, country, language) do

@@ -1,7 +1,7 @@
 defmodule Core do
   use Application
 
-  def start(_, _) do
+  def start do
     Core.Mnesia.persist
   end
 

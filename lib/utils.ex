@@ -11,6 +11,17 @@ defmodule Core.Utils do
       |> date_to_int
   end
 
+  def today do
+    Timex.today
+      |> date_to_int
+  end
+
+  def yesterday do
+    Timex.today
+      |> Timex.shift(days: -1)
+      |> date_to_int
+  end
+
   def last_week_day do
     Timex.today
       |> Timex.shift(days: -7)
