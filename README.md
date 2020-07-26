@@ -2,25 +2,25 @@
 
 **Omnixent** is a community effort to build a simple API which allows you to understand what people searches on search engines, social network etc.
 
-Legenda:
+## Status
 
-| Emoticon | Status                   |
-|----------|--------------------------|
-|    ✅    | Ready                    |
-|    🚧    | Under active development |
-|    🛣    | In roadmap               |
+**Omnixent** is still under active development, but you can already start to use the following APIs (list will be updated as soon as new features will roll out).
 
-| Website     | Status |
-|-------------|--------|
-| Google      |   ✅   |
-| YouTube     |   🚧   |
-| Facebook    |   🛣   |
-| Twitter     |   🛣   |
-| Amazon      |   🛣   |
-| Bing        |   🛣   |
-| Yandex      |   🛣   |
-| DuckDuckGo  |   🛣   |
-| Baidu       |   🛣   |
+- ✅ Ready
+- 🚧 Under active development
+- 🛣 In roadmap
+
+| Search Engine | Status |
+|--------------|--------|
+| Google       |   ✅   |
+| YouTube      |   🚧   |
+| Facebook     |   🛣   |
+| Twitter      |   🛣   |
+| Amazon       |   🛣   |
+| Bing         |   🛣   |
+| Yandex       |   🛣   |
+| DuckDuckGo   |   🛣   |
+| Baidu        |   🛣   |
 
 ## Installation
 
