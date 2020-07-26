@@ -1,7 +1,7 @@
 defmodule Omnixent.Languages do
 
   def read_languages_file(lang \\ "en") do
-    priv = :code.priv_dir(:core)
+    priv = :code.priv_dir(:omnixent)
     with {:ok, content} = File.read("#{priv}/languages/#{lang}.txt") do
       content
         |> String.split("\n")
