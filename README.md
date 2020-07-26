@@ -84,7 +84,7 @@ query Search($term: String!, $country: String!, $language: String!) {
     when,
     where,
   },
-  google(where: { _and: { _eq: { term: $term, country: $country, language $language } }}) {
+  youtube(where: { _and: { _eq: { term: $term, country: $country, language $language } }}) {
     when,
     where,
   }
