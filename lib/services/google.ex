@@ -13,7 +13,7 @@ defmodule Omnixent.Services.Google do
           |> Enum.map(& String.replace(&1, "@", term))
           |> Enum.map(& call_google(&1, country, language))
           |> Enum.map(& store_to_mnesia(&1, term, country, language, "google"))
-        with {:true, result} = Omnixent.Mnesia.check_if_exist(term, country, language, Omnixent.Utils.today) do
+        with {:true, result} = Omnixent.Mnesia.check_if_exist(term, country, language, Omnixent.Utils.current_date) do
           result
         end
     end
