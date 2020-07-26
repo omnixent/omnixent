@@ -1,4 +1,4 @@
-<img src="/docs/logo/Omnixent.png" width="100%" />
+<img src="/docs/logo/omnixent.png" width="100%" />
 
 **Omnixent** is a community effort to build a simple API which allows you to understand what people searches on search engines, social network etc.
 
