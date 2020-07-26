@@ -36,4 +36,17 @@ defmodule Core.Utils do
     end
   end
 
+  def safe_json_decode(json) do
+    case Poison.decode(json) do
+      {:ok, result} ->
+        result
+      {:error, reason} ->
+        IO.puts     "Error while parsing JSON:"
+        IO.inspect  reason
+        %{}
+      _ ->
+        %{}
+    end
+  end
+
 end
