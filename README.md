@@ -7,9 +7,9 @@
 - [Index](#index)
 - [Status](#status)
 - [API Example](#api-example)
- - [Elixir Native API](#elixir-native-api)
- - [REST API](#rest-api)
- - [GraphQL API](#graphql-api)
+  - [Elixir Native API](#elixir-native-api)
+  - [REST API](#rest-api)
+  - [GraphQL API](#graphql-api)
 - [Installation](#installation)
 - [License](#license)
 
@@ -99,7 +99,7 @@ by adding `Omnixent` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:Omnixent, "~> 0.0.1"}
+    {:omnixent, "~> 0.0.1"}
   ]
 end
 ```
