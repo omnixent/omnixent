@@ -1,4 +1,4 @@
-defmodule Core.Services.Youtube do
+defmodule Omnixent.Services.Youtube do
 
   @youtube_endpoint    "https://clients1.google.com/complete/search"
   @youtube_queryparams "?client=youtube&gs_ri=youtube"

@@ -1,9 +1,9 @@
-defmodule Core.MixProject do
+defmodule Omnixent.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :core,
+      app: :Omnixent,
       version: "0.1.0",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,

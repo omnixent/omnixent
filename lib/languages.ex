@@ -1,4 +1,4 @@
-defmodule Core.Languages do
+defmodule Omnixent.Languages do
 
   def read_languages_file(lang \\ "en") do
     priv = :code.priv_dir(:core)

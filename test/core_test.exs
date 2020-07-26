@@ -3,6 +3,6 @@ defmodule CoreTest do
   doctest Core
 
   test "greets the world" do
-    assert Core.hello() == :world
+    assert Omnixent.hello() == :world
   end
 end

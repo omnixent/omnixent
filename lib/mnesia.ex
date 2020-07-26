@@ -1,4 +1,4 @@
-defmodule Core.Mnesia do
+defmodule Omnixent.Mnesia do
   use Memento.Table, 
     attributes: [
       :id,
@@ -28,14 +28,14 @@ defmodule Core.Mnesia do
     Memento.Schema.create(@nodes)
     Memento.start
 
-    Memento.Table.create!(Core.Mnesia, disc_copies: @nodes)
+    Memento.Table.create!(Omnixent.Mnesia, disc_copies: @nodes)
   end
 
   def insert_result(item, original_term, country, language, platform) do
     with {:ok, term, result} = item do
       Memento.transaction! fn ->
-        current_date = Core.Utils.current_date
-        Memento.Query.write(%Core.Mnesia{
+        current_date = Omnixent.Utils.current_date
+        Memento.Query.write(%Omnixent.Mnesia{
           term:          term,
           original_term: original_term,
           result:        result,
@@ -51,7 +51,7 @@ defmodule Core.Mnesia do
 
   def check_if_exist(guards) do
     Memento.transaction! fn ->
-      result = Memento.Query.select(Core.Mnesia, guards)
+      result = Memento.Query.select(Omnixent.Mnesia, guards)
       case length(result) > 0 do
         true ->
           {:true, result}
@@ -68,7 +68,7 @@ defmodule Core.Mnesia do
         {:==, :country,       country},
         {:==, :language,      language},
       ]
-      result = Memento.Query.select(Core.Mnesia, guards)
+      result = Memento.Query.select(Omnixent.Mnesia, guards)
       case length(result) > 0 do
         true ->
           {:true, result}
@@ -86,7 +86,7 @@ defmodule Core.Mnesia do
         {:==, :language,      language},
         {:>=, :date,          date}
       ]
-      result = Memento.Query.select(Core.Mnesia, guards)
+      result = Memento.Query.select(Omnixent.Mnesia, guards)
       case length(result) > 0 do
         true ->
           {:true, result}

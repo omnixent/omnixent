@@ -1,4 +1,4 @@
-defmodule Core.Utils do
+defmodule Omnixent.Utils do
   use Timex
 
   def binary_to_string(binary) do

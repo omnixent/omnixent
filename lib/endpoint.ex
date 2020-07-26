@@ -1,19 +1,19 @@
-defmodule Core.Endpoint do
+defmodule Omnixent.Endpoint do
 
   @google_endpoint    "https://www.google.com/complete/search?q="
   @google_queryparams "&client=psy-ab&"
 
   def google(term, country \\ "en", language \\ "en") do
 
-    case Core.Mnesia.check_if_exist(term, country, language, Core.Utils.last_week_day) do
+    case Omnixent.Mnesia.check_if_exist(term, country, language, Omnixent.Utils.last_week_day) do
       {:true, result} ->
         result
       _ ->
-        Core.Languages.read_languages_file(language)
+        Omnixent.Languages.read_languages_file(language)
           |> Enum.map(& String.replace(&1, "@", term))
           |> Enum.map(& call_google(&1, country, language))
           |> Enum.map(& store_to_mnesia(&1, term, country, language, "google"))
-        with {:true, result} = Core.Mnesia.check_if_exist(term, country, language, Core.Utils.today) do
+        with {:true, result} = Omnixent.Mnesia.check_if_exist(term, country, language, Omnixent.Utils.today) do
           result
         end
     end
@@ -74,7 +74,7 @@ defmodule Core.Endpoint do
   def store_to_mnesia(item, original_term, country, language, platform) do
     case item do
       {:ok, _, result} ->
-        Core.Mnesia.insert_result(item, original_term, country, language, platform)
+        Omnixent.Mnesia.insert_result(item, original_term, country, language, platform)
         {:ok, result}
       _ ->
        IO.inspect item 
