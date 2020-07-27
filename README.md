@@ -2,6 +2,8 @@
 
 **Omnixent** is a community effort to build a simple API which allows you to understand what people searches on search engines, social network etc.
 
+🎉 Read the announcement post [here](https://www.micheleriva.it/posts/2020-07-27-introducing-omnixent)!
+
 ## Index
 
 - [Index](#index)
