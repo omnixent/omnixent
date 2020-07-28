@@ -1,64 +1,64 @@
 @
 
-quel est @ 
+quel est @
 pouquoi @
 quand @
 où est-ce @
 comme @
-est @ 
-qui est @  
+est @
+qui est @ 
 peut @
-ce n'est pas @ 
-avec @  
+ce n'est pas @
+avec @ 
 sans @
-pour @  
-à @ 
+pour @ 
+à @
 de @
 quel est @
 
-@ pouquoi 
+@ pouquoi
 @ quand
 @ où est-ce
 @ comme
 @ est
-@ Qu'est-ce  
+@ Qu'est-ce
 @ peut
 @ fait
-@ ne fait pas 
-@ avec 
+@ ne fait pas
+@ avec
 @ sans
 @ pour
 @ a
 @ de
 
 @ contre
-@ vs 
+@ vs
 @ et
 @ ou
 
-@ a 
-@ b 
-@ c 
-@ d 
+@ a
+@ b
+@ c
+@ d
 @ e
-@ f 
-@ g 
-@ h 
-@ i 
+@ f
+@ g
+@ h
+@ i
 @ j
-@ k 
-@ l 
-@ m 
-@ n 
+@ k
+@ l
+@ m
+@ n
 @ o
-@ p 
-@ q 
-@ r 
-@ s 
+@ p
+@ q
+@ r
+@ s
 @ t
-@ u 
-@ v 
-@ w 
-@ x 
+@ u
+@ v
+@ w
+@ x
 @ y
 @ z

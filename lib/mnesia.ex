@@ -61,12 +61,13 @@ defmodule Omnixent.Mnesia do
     end
   end
 
-  def check_if_exist(term, country, language) do
+  def check_if_exist(term, country, language, platform) do
     Memento.transaction! fn ->
       guards = [
         {:==, :original_term, term},
         {:==, :country,       country},
         {:==, :language,      language},
+        {:==, :platform,      platform}
       ]
       result = Memento.Query.select(Omnixent.Mnesia, guards)
       case length(result) > 0 do
@@ -78,12 +79,13 @@ defmodule Omnixent.Mnesia do
     end
   end
 
-  def check_if_exist(term, country, language, date) do
+  def check_if_exist(term, country, language, platform, date) do
     Memento.transaction! fn ->
       guards = [
         {:==, :original_term, term},
         {:==, :country,       country},
         {:==, :language,      language},
+        {:==, :platform,      platform},
         {:>=, :date,          date}
       ]
       result = Memento.Query.select(Omnixent.Mnesia, guards)
@@ -98,7 +100,19 @@ defmodule Omnixent.Mnesia do
 
   def format_search_id(term, country, language, date, platform) do
     [term, country, language, date, platform]
-    |> Enum.join("-")
+      |> Enum.join("-")
+      |> String.replace(~r[/\s/gi], "_")
   end
+
+  def store_to_mnesia(item, original_term, country, language, platform) do
+    case item do
+      {:ok, _, result} ->
+        Omnixent.Mnesia.insert_result(item, original_term, country, language, platform)
+        {:ok, result}
+      _ ->
+       IO.inspect item 
+       {:error, "Unknown error while inserting to Mnesia"}
+    end
+  end  
 
 end
