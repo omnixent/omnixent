@@ -8,7 +8,7 @@ defmodule Omnixent.Mnesia do
       :result,
       :country,
       :language,
-      :platform,
+      :service,
       :date
     ],
     index: [
@@ -16,7 +16,7 @@ defmodule Omnixent.Mnesia do
       :searchid,
       :country,
       :language,
-      :platform
+      :service
     ],
     type: :ordered_set,
     autoincrement: true
@@ -31,7 +31,7 @@ defmodule Omnixent.Mnesia do
     Memento.Table.create!(Omnixent.Mnesia, disc_copies: @nodes)
   end
 
-  def insert_result(item, original_term, country, language, platform) do
+  def insert_result(item, original_term, country, language, service) do
     with {:ok, term, result} = item do
       Memento.transaction! fn ->
         current_date = Omnixent.Utils.current_date
@@ -41,8 +41,8 @@ defmodule Omnixent.Mnesia do
           result:        result,
           country:       country,
           language:      language,
-          searchid:      format_search_id(term, country, language, current_date, platform),
-          platform:      platform,
+          searchid:      format_search_id(term, country, language, current_date, service),
+          service:       service,
           date:          current_date
         })
       end
@@ -61,13 +61,13 @@ defmodule Omnixent.Mnesia do
     end
   end
 
-  def check_if_exist(term, country, language, platform) do
+  def check_if_exist(term, country, language, service) do
     Memento.transaction! fn ->
       guards = [
         {:==, :original_term, term},
         {:==, :country,       country},
         {:==, :language,      language},
-        {:==, :platform,      platform}
+        {:==, :service,       service}
       ]
       result = Memento.Query.select(Omnixent.Mnesia, guards)
       case length(result) > 0 do
@@ -79,13 +79,13 @@ defmodule Omnixent.Mnesia do
     end
   end
 
-  def check_if_exist(term, country, language, platform, date) do
+  def check_if_exist(term, country, language, service, date) do
     Memento.transaction! fn ->
       guards = [
         {:==, :original_term, term},
         {:==, :country,       country},
         {:==, :language,      language},
-        {:==, :platform,      platform},
+        {:==, :service,       service},
         {:>=, :date,          date}
       ]
       result = Memento.Query.select(Omnixent.Mnesia, guards)
@@ -98,16 +98,16 @@ defmodule Omnixent.Mnesia do
     end
   end
 
-  def format_search_id(term, country, language, date, platform) do
-    [term, country, language, date, platform]
+  def format_search_id(term, country, language, date, service) do
+    [term, country, language, date, service]
       |> Enum.join("-")
       |> String.replace(~r[/\s/gi], "_")
   end
 
-  def store_to_mnesia(item, original_term, country, language, platform) do
+  def store_to_mnesia(item, original_term, country, language, service) do
     case item do
       {:ok, _, result} ->
-        Omnixent.Mnesia.insert_result(item, original_term, country, language, platform)
+        Omnixent.Mnesia.insert_result(item, original_term, country, language, service)
         {:ok, result}
       _ ->
        IO.inspect item 

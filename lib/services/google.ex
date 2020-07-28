@@ -4,22 +4,6 @@ defmodule Omnixent.Services.Google do
   @google_endpoint    "https://www.google.com/complete/search?q="
   @google_queryparams "&client=psy-ab&"
 
-  def search(term, country \\ "en", language \\ "en") do
-    case Omnixent.Mnesia.check_if_exist(term, country, language, @platform , Omnixent.Utils.last_week_day) do
-      {:true, result} ->
-        result
-      _ ->
-        Omnixent.Languages.read_languages_file(language)
-          |> Enum.map(& String.replace(&1, "@", term))
-          |> Enum.map(& call_google(&1, country, language))
-          |> Enum.map(& Omnixent.Mnesia.store_to_mnesia(&1, term, country, language, @platform))
-        
-        with {:true, result} = Omnixent.Mnesia.check_if_exist(term, country, language, Omnixent.Utils.current_date) do
-          result
-        end
-    end
-  end
-
   def call_google(term, country, language) do
     case format_google_uri(term, country, language) |> HTTPoison.get do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
@@ -41,9 +25,9 @@ defmodule Omnixent.Services.Google do
       <> URI.encode(term)
       <> @google_queryparams
       <> "hl="
-      <> String.downcase(country)
+      <> String.downcase(Atom.to_string(country))
       <> "-"
-      <> String.upcase(language)
+      <> String.upcase(Atom.to_string(language))
   end
 
   def extract_google_body(response) do

@@ -4,22 +4,6 @@ defmodule Omnixent.Services.Youtube do
   @youtube_endpoint    "https://clients1.google.com/complete/search"
   @youtube_queryparams "&client=youtube&gs_ri=youtube"
 
-  def search(term, country \\ "en", language \\ "en") do
-    case Omnixent.Mnesia.check_if_exist(term, country, language, @platform , Omnixent.Utils.last_week_day) do
-      {:true, result} ->
-        result
-      _ ->
-        Omnixent.Languages.read_languages_file(language)
-          |> Enum.map(& String.replace(&1, "@", term))
-          |> Enum.map(& call_youtube(&1, country, language))
-          |> Enum.map(& Omnixent.Mnesia.store_to_mnesia(&1, term, country, language, @platform))
-        
-        with {:true, result} = Omnixent.Mnesia.check_if_exist(term, country, language, Omnixent.Utils.current_date) do
-          result
-        end
-    end
-  end
-
   def call_youtube(term, country, language) do
     case format_youtube_uri(term, country, language) |> HTTPoison.get do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
@@ -36,15 +20,15 @@ defmodule Omnixent.Services.Youtube do
       end
   end
 
-  def format_youtube_uri(term, country \\ "en", language \\ "en") do
+  def format_youtube_uri(term, country, language) do
     @youtube_endpoint
       <> "?q="
       <> URI.encode(term)
       <> @youtube_queryparams
       <> "hl="
-      <> String.downcase(language)
+      <> String.downcase(Atom.to_string(language))
       <> "&gl="
-      <> String.upcase(country)
+      <> String.upcase(Atom.to_string(country))
   end
 
   def extract_youtube_body(result) do
