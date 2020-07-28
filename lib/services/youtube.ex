@@ -17,7 +17,7 @@ defmodule Omnixent.Services.Youtube do
 
   def extract_body(result) do
     try do
-      result
+      "#{:erlang.binary_to_list(result)}"
         |> String.replace(~r/^window\.google\.ac\.h\(/, "")
         |> String.replace(~r/\)$/, "")
         |> Omnixent.Utils.safe_json_decode
