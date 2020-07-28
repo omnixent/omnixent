@@ -42,14 +42,6 @@ defmodule Omnixent.Utils do
       |> date_to_int
   end
 
-  @doc"""
-  Formats a date value into an integer.
-
-  ## Examples
-
-  iex(1)> Omnixent.Utils.date_to_int(~D[2020-07-26])
-  2020726
-  """
   defp date_to_int(date) do
     with d = date.day, m = date.month, y = date.year do
       with {date, _} = Integer.parse "#{y}#{m}#{d}" do
@@ -63,10 +55,11 @@ defmodule Omnixent.Utils do
       {:ok, result} ->
         result
       {:error, reason} ->
-        IO.puts     "Error while parsing JSON:"
-        IO.inspect  reason
+        IO.puts "Error while parsing JSON: " <> json
+        IO.inspect reason
         %{}
       _ ->
+        IO.puts "Unknown error while parsing JSON: " <> json
         %{}
     end
   end
