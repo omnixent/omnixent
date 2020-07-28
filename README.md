@@ -42,7 +42,7 @@
 ### Elixir Native API
 
 ```bash
-iex> Omnixent.Services.Google.search("java", "en", "us")
+iex> Omnixent.Services.search("Java", :google, :us, :en)
 [
   %{
     term: "java",
