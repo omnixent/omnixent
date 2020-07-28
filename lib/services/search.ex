@@ -9,18 +9,18 @@ defmodule Omnixent.Services do
 
   import Omnixent.Mnesia,
          only: [
-          check_if_exist:  5,
-          store_to_mnesia: 5
+           check_if_exist:  5,
+           store_to_mnesia: 5
          ]
 
   import Omnixent.Utils,
          only: [
-          last_week_day: 0
+           last_week_day: 0
          ]
 
   import Omnixent.Languages,
          only: [
-          read_languages_file: 1
+           read_languages_file: 1
          ]
 
   def search(term, service \\ :google, country \\ :us, language \\ :en) do
@@ -48,11 +48,36 @@ defmodule Omnixent.Services do
   end
 
   defp call_service(term, country, language, service) do
+    case get_service_uri(term, country, language, service) |> HTTPoison.get do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+        {:ok, term, extract_body(body, service)}
+
+      {:ok, %HTTPoison.Response{status_code: 404}} ->
+        {:error, 404}
+
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        {:error, reason}
+
+      _ ->
+        {:error, "Unknown error from HTTPoison"}
+      end
+  end
+
+  defp get_service_uri(term, country, language, service) do
     case service do
-      :google  -> 
-        Omnixent.Services.Google.call_google(term, country, language)
-      :youtube -> 
-        Omnixent.Services.Youtube.call_youtube(term, country, language)
+      :google ->
+        Omnixent.Services.Google.format_uri(term, country, language)
+      :youtube ->
+        Omnixent.Services.Youtube.format_uri(term, country, language)
+    end
+  end
+
+  defp extract_body(body, service) do
+    case service do
+      :google ->
+        Omnixent.Services.Google.extract_body(body)
+      :youtube ->
+        Omnixent.Services.Youtube.extract_body(body)
     end
   end
 
