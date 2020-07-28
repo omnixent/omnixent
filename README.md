@@ -24,16 +24,16 @@
 - 🛣 In roadmap
 
 | Search Engine | Status |
-|--------------|--------|
-| Google       |   ✅   |
-| YouTube      |   🚧   |
-| Facebook     |   🛣   |
-| Twitter      |   🛣   |
-| Amazon       |   🛣   |
-| Bing         |   🛣   |
-| Yandex       |   🛣   |
-| DuckDuckGo   |   🛣   |
-| Baidu        |   🛣   |
+|--------------|---------|
+| Google       |   ✅    |
+| YouTube      |   ✅    |
+| Facebook     |   🛣    |
+| Twitter      |   🛣    |
+| Amazon       |   🚧    |
+| Bing         |   🛣    |
+| Yandex       |   🛣    |
+| DuckDuckGo   |   🛣    |
+| Baidu        |   🛣    |
 
 ## API Example
 
