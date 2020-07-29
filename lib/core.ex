@@ -18,7 +18,9 @@ defmodule Omnixent.Core do
       :us,
       :uk,
       :it,
-      :fr
+      :fr,
+      :de,
+      :at
     ]
   end
 
@@ -26,7 +28,8 @@ defmodule Omnixent.Core do
     [
       :en,
       :it,
-      :fr
+      :fr,
+      :de
     ]
   end
 
