@@ -42,6 +42,28 @@ defmodule Omnixent.Utils do
       |> date_to_int
   end
 
+  @doc"""
+  Returns the type of a given variable.
+
+  ## Examples
+
+  iex(1)> Omnixent.Utils.typeof("Hello!")
+  :binary
+  """
+  def typeof(self) do
+    cond do
+      is_float(self)    -> :float
+      is_number(self)   -> :number
+      is_atom(self)     -> :atom
+      is_boolean(self)  -> :boolean
+      is_binary(self)   -> :binary
+      is_function(self) -> :function
+      is_list(self)     -> :list
+      is_tuple(self)    -> :tuple
+      true              -> :unknown
+    end    
+  end
+
   defp date_to_int(date) do
     with d = date.day, m = date.month, y = date.year do
       with {date, _} = Integer.parse "#{y}#{m}#{d}" do
