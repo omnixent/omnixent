@@ -31,7 +31,7 @@ defmodule Omnixent.Services do
       
           case check_if_exist(term, country, language, service, last_week_day) do
             {:true, result} ->
-              result
+              format_result(result, term, service, country, language)
             _ ->
               read_languages_file(language)
                 |> Enum.map(& String.replace(&1, "@", term))
@@ -80,6 +80,26 @@ defmodule Omnixent.Services do
       :youtube ->
         Omnixent.Services.Youtube.extract_body(body)
     end
+  end
+
+  defp format_result(result, term, service, country, language) do
+
+    filtered_results = Enum.map(result, fn res ->
+      %{
+        id:     res.id,
+        date:   res.date,
+        term:   res.term,
+        result: res.result,
+      }
+    end)
+    
+    %{
+      term:     term,
+      service:  service,
+      country:  country,
+      language: language,
+      result:   filtered_results
+    }
   end
 
 end

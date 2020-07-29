@@ -43,17 +43,27 @@
 
 ```bash
 iex> Omnixent.Services.search("Java", :google, :us, :en)
-[
-  %{
-    term: "java",
-    results: ["java", "javascript", "java vs javascript", "java 10 repl", "java jdk"]
-  },
-  %{
-    term: "when java",
-    results: ["when javascript", "when java was developed", "when java 1.8 released"]
-  },
-  ...
-]
+%{
+  service:  :google,
+  term:     "java",
+  country:  :us,
+  language: :en,
+  result: [
+    %{
+      term: "java",
+      date: 2020729,
+      id: 4029
+      results: ["java", "javascript", "java vs javascript", "java 10 repl", "java jdk"]
+    },
+    %{
+      term: "when java",
+      date: 2020729,
+      id: 4030
+      results: ["when javascript", "when java was developed", "when java 1.8 released"]
+    },
+    ...
+  ]
+}
 ```
 
 ### REST API
