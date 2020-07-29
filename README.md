@@ -19,20 +19,20 @@
 
 **Omnixent** is still under active development, but you can already start to use the following APIs (list will be updated as soon as new features will roll out).
 
-- ✅ Ready
-- 🚧 Under active development
-- 🛣 In roadmap
+- ✅  Ready
+- 🚧  Under active development
+- 🛣  In roadmap
 
 | Search Engine | Status |
 |--------------|---------|
 | Google       |   ✅    |
 | YouTube      |   ✅    |
+| Amazon       |   ✅    |
 | Facebook     |   🛣    |
 | Twitter      |   🛣    |
-| Amazon       |   🚧    |
-| Bing         |   🛣    |
-| Yandex       |   🛣    |
-| DuckDuckGo   |   🛣    |
+| Bing         |   🚧    |
+| Yandex       |   🚧    |
+| DuckDuckGo   |   🚧    |
 | Baidu        |   🛣    |
 
 ## API Example

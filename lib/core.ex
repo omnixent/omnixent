@@ -8,7 +8,8 @@ defmodule Omnixent.Core do
   def available_services() do
     [
       :google,
-      :youtube
+      :youtube,
+      :amazon
     ]
   end
 
