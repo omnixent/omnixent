@@ -23,7 +23,7 @@ defmodule Omnixent.Services do
            read_languages_file: 1
          ]
 
-  @spec search(string, atom, atom, atom) :: struct
+  @spec search(String.t(), atom, atom, atom) :: struct
   def search(term, service \\ :google, country \\ :us, language \\ :en) do
     with true <- Enum.member?(available_languages, language),
          true <- Enum.member?(available_countries, country),
