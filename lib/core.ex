@@ -5,6 +5,14 @@ defmodule Omnixent.Core do
     Omnixent.Mnesia.persist
   end
 
+  def availability do
+    %{
+      services: available_services,
+      countries: available_countries,
+      languages: available_languages
+    }
+  end
+
   def available_services() do
     [
       :google,
