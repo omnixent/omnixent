@@ -25,9 +25,9 @@ defmodule Omnixent.Services do
 
   @spec search(String.t(), atom, atom, atom) :: struct
   def search(term, service \\ :google, country \\ :us, language \\ :en) do
-    with true <- Enum.member?(available_languages, language),
-         true <- Enum.member?(available_countries, country),
-         true <- Enum.member?(available_services,  service) do
+    with true <- Enum.member?(available_languages(), language),
+         true <- Enum.member?(available_countries(), country),
+         true <- Enum.member?(available_services(),  service) do
       
           case check_if_exist(term, country, language, service, last_week_day) do
             {:true, result} ->
