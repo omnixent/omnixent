@@ -3,7 +3,7 @@ defmodule Omnixent.MixProject do
 
   @app     :omnixent
   @name    "Omnixent"
-  @version "0.0.3"
+  @version "0.0.5"
   @github  "https://github.com/omnixent/#{@app}"
 
   def project do
