@@ -18,20 +18,22 @@
 
 <h3 align="center"> Built by </h3>
 
-<table>
-  <tr>
-    <td align="center" valign="middle">
-      <a href="https://www.hackdoor.io?utm_source=github.com/omnixent/omnixent">
-        <img src="/assets/github/logo-hackdoor.png" width="222px" style="max-width:100%;" alt="Hackdoor" />
-      </a>
-    </td>
-    <td align="center" valign="middle">
-      <a href="https://www.lotrek.it?utm_source=github.com/omnixent/omnixent">
-        <img src="/assets/github/logo-lotrek.png" width="222px" style="max-width:100%;" alt="Hackdoor" />
-      </a>
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" valign="middle">
+        <a href="https://www.hackdoor.io?utm_source=github.com/omnixent/omnixent">
+          <img src="/assets/github/logo-hackdoor.png" width="222px" style="max-width:100%;" alt="Hackdoor" />
+        </a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://www.lotrek.it?utm_source=github.com/omnixent/omnixent">
+          <img src="/assets/github/logo_lotrek.png" width="222px" style="max-width:100%;" alt="Lotrék" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ## Docs
 [REST API docs](https://docs.oss.omnixent.com)
