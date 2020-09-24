@@ -7,6 +7,7 @@
 ## Index
 
 - [Index](#index)
+- [Docs](#docs)
 - [Status](#status)
 - [API Example](#api-example)
   - [Elixir Native API](#elixir-native-api)
@@ -14,6 +15,27 @@
   - [GraphQL API](#graphql-api)
 - [Installation](#installation)
 - [License](#license)
+
+<h3 align="center"> Built by </h3>
+
+<table>
+  <tr>
+    <td align="center" valign="middle">
+      <a href="https://www.hackdoor.io?utm_source=github.com/omnixent/omnixent">
+        <img src="/assets/github/logo-hackdoor.png" width="222px" style="max-width:100%;" alt="Hackdoor" />
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://www.lotrek.it?utm_source=github.com/omnixent/omnixent">
+        <img src="/assets/github/logo-lotrek.png" width="222px" style="max-width:100%;" alt="Hackdoor" />
+      </a>
+    </td>
+  </tr>
+</table>
+
+## Docs
+[REST API docs](https://docs.oss.omnixent.com)
+[Project Architecture](https://architecture.omnixent.com)
 
 ## Status
 
@@ -111,14 +133,10 @@ by adding `Omnixent` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:omnixent, "~> 0.0.2"}
+    {:omnixent, "~> 0.0.5"}
   ]
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/core](https://hexdocs.pm/omnixent).
 
 ## License
 
