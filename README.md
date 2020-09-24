@@ -36,8 +36,8 @@
 </div>
 
 ## Docs
-[REST API docs](https://docs.oss.omnixent.com)
-[Project Architecture](https://architecture.omnixent.com)
+- [REST API docs](https://docs.oss.omnixent.com)
+- [Project Architecture](https://architecture.omnixent.com)
 
 ## Status
 
