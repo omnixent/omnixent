@@ -69,7 +69,7 @@ by adding `Omnixent` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:omnixent, "~> 0.0.5"}
+    {:omnixent, "~> 0.0.6"}
   ]
 end
 ```
