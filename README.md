@@ -59,73 +59,7 @@
 | DuckDuckGo   |   🚧    |
 | Baidu        |   🛣    |
 
-## API Example
 
-**Omnixent** is entirely written in **Elixir**, so that it can take advantage of using some well known **OTP** features such as **Mnesia**. In fact, it doesn't depend on external tools/databases for storing data, generating APIs, cache etc.
-
-### Elixir Native API
-
-```bash
-iex> Omnixent.Services.search("Java", :google, :us, :en)
-%{
-  service:  :google,
-  term:     "java",
-  country:  :us,
-  language: :en,
-  result: [
-    %{
-      term: "java",
-      date: 2020729,
-      id: 4029
-      results: ["java", "javascript", "java vs javascript", "java 10 repl", "java jdk"]
-    },
-    %{
-      term: "when java",
-      date: 2020729,
-      id: 4030
-      results: ["when javascript", "when java was developed", "when java 1.8 released"]
-    },
-    ...
-  ]
-}
-```
-
-### REST API
-
-**Omnixent** also provides some really useful REST APIs:
-
-```bash
-curl -X GET https://localhost:4000?term=java,language=en&country=us
-
-[
-  {
-    "term": "java",
-    "results": ["java", "javascript", "java vs javascript", "java 10 repl", "java jdk"]
-  },
-  {
-    "term": "when java",
-    "results": ["when javascript", "when java was developed", "when java 1.8 released"]
-  },
-  ...
-]
-```
-
-### GraphQL API
-
-In the next releases, **Omnixent** will also support **GraphQL**:
-
-```graphql
-query Search($term: String!, $country: String!, $language: String!) {
-  google(where: { _and: { _eq: { term: $term, country: $country, language $language } }}) {
-    when,
-    where,
-  },
-  youtube(where: { _and: { _eq: { term: $term, country: $country, language $language } }}) {
-    when,
-    where,
-  }
-}
-```
 
 ## Installation
 

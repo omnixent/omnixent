@@ -37,11 +37,12 @@ defmodule Omnixent.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.6"},
-      {:poison,    "~> 3.1"},
-      {:memento,   "~> 0.3.1"},
-      {:timex,     "~> 3.5"},
-      {:ex_doc,    ">= 0.0.0", only: :dev, runtime: false}
+      {:httpoison,   "~> 1.6"},
+      {:poison,      "~> 3.1"},
+      {:memento,     "~> 0.3.1"},
+      {:timex,       "~> 3.5"},
+      {:elixir_uuid, "~> 1.2" },
+      {:ex_doc,      ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 

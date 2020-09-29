@@ -10,7 +10,7 @@ defmodule Omnixent.Services do
   import Omnixent.Mnesia,
          only: [
            check_if_exist:  5,
-           store_to_mnesia: 5
+           store_to_mnesia: 6
          ]
 
   import Omnixent.Utils,
@@ -33,10 +33,12 @@ defmodule Omnixent.Services do
             {:true, result} ->
               format_result(result, term, service, country, language)
             _ ->
+              search_uuid = UUID.uuid4
+              IO.inspect search_uuid
               read_languages_file(language)
                 |> Enum.map(& String.replace(&1, "@", term))
                 |> Enum.map(& call_service(&1, country, language, service))
-                |> Enum.map(& store_to_mnesia(&1, term, country, language, service))
+                |> Enum.map(& store_to_mnesia(&1, term, country, language, service, search_uuid))
 
               search(term, service, country, language)
           end
@@ -88,16 +90,19 @@ defmodule Omnixent.Services do
 
   defp format_result(result, term, service, country, language) do
 
+    search_uuid = result |> hd |> (&(&1.uuid)).()
+
     filtered_results = Enum.map(result, fn res ->
       %{
         id:     res.id,
         date:   res.date,
         term:   res.term,
-        result: res.result,
+        result: res.result
       }
     end)
     
     %{
+      uuid:     search_uuid,
       term:     term,
       service:  service,
       country:  country,

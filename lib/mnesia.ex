@@ -2,6 +2,7 @@ defmodule Omnixent.Mnesia do
   use Memento.Table, 
     attributes: [
       :id,
+      :uuid,
       :searchid,
       :term,
       :original_term,
@@ -12,6 +13,7 @@ defmodule Omnixent.Mnesia do
       :date
     ],
     index: [
+      :uuid,
       :term,
       :searchid,
       :country,
@@ -31,11 +33,12 @@ defmodule Omnixent.Mnesia do
     Memento.Table.create!(Omnixent.Mnesia, disc_copies: @nodes)
   end
 
-  def insert_result(item, original_term, country, language, service) do
+  def insert_result(item, original_term, country, language, service, uuid) do
     with {:ok, term, result} = item do
       Memento.transaction! fn ->
         current_date = Omnixent.Utils.current_date
         Memento.Query.write(%Omnixent.Mnesia{
+          uuid:          uuid,
           term:          term,
           original_term: original_term,
           result:        result,
@@ -98,16 +101,32 @@ defmodule Omnixent.Mnesia do
     end
   end
 
+  def get_by_uuid(uuid) do
+    Memento.transaction! fn ->
+      guards = [
+        {:==, :uuid, uuid}
+      ]
+
+      result = Memento.Query.select(Omnixent.Mnesia, guards)
+      case length(result) > 0 do
+        true ->
+          {:true, result}
+        false ->
+          {:false}
+      end
+    end
+  end
+
   def format_search_id(term, country, language, date, service) do
     [term, country, language, date, service]
       |> Enum.join("-")
       |> String.replace(~r[/\s/gi], "_")
   end
 
-  def store_to_mnesia(item, original_term, country, language, service) do
+  def store_to_mnesia(item, original_term, country, language, service, uuid) do
     case item do
       {:ok, _, result} ->
-        Omnixent.Mnesia.insert_result(item, original_term, country, language, service)
+        Omnixent.Mnesia.insert_result(item, original_term, country, language, service, uuid)
         {:ok, result}
       _ ->
        IO.inspect item 
