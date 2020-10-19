@@ -2,7 +2,7 @@ defmodule Omnixent.Core do
   use Application
 
   def start do
-    Omnixent.Mnesia.persist()
+    Omnixent.Mnesia.persist
   end
 
   def availability do
