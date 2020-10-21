@@ -74,6 +74,8 @@ defmodule Omnixent.Services do
         Omnixent.Services.Youtube.format_uri(term, country, language)
       :amazon ->
         Omnixent.Services.Amazon.format_uri(term, country, language)
+      :duckduckgo ->
+        Omnixent.Services.DuckDuckGo.format_uri(term, country, language)
     end
   end
 
@@ -85,6 +87,8 @@ defmodule Omnixent.Services do
         Omnixent.Services.Youtube.extract_body(body)
       :amazon ->
         Omnixent.Services.Amazon.extract_body(body)
+      :duckduckgo ->
+        Omnixent.Services.DuckDuckGo.extract_body(body)
     end
   end
 
