@@ -1,7 +1,7 @@
 export type Country =
-  | 'de'
-  | 'fr'
-  | 'gb'
-  | 'it'
-  | 'pt'
-  | 'us';
+  | "de"
+  | "fr"
+  | "gb"
+  | "it"
+  | "pt"
+  | "us";

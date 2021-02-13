@@ -1,8 +1,10 @@
 <img src="/docs/logo/omnixent.png" width="100%" />
 
-**Omnixent** is a community effort to build a simple API which allows you to understand what people searches on search engines, social network etc.
+**Omnixent** is a community effort to build a simple API which allows you to
+understand what people searches on search engines, social network etc.
 
-🎉 Read the announcement post [here](https://www.micheleriva.it/posts/2020-07-27-introducing-omnixent)!
+🎉 Read the announcement post
+[here](https://www.micheleriva.it/posts/2020-07-27-introducing-omnixent)!
 
 ## Index
 
@@ -36,30 +38,30 @@
 </div>
 
 ## Docs
+
 - [REST API docs](https://docs.oss.omnixent.com)
 - [Project Architecture](https://architecture.omnixent.com)
 
 ## Status
 
-**Omnixent** is still under active development, but you can already start to use the following APIs (list will be updated as soon as new features will roll out).
+**Omnixent** is still under active development, but you can already start to use
+the following APIs (list will be updated as soon as new features will roll out).
 
-- ✅  Ready
-- 🚧  Under active development
-- 🛣  In roadmap
+- ✅ Ready
+- 🚧 Under active development
+- 🛣 In roadmap
 
 | Search Engine | Status |
-|--------------|---------|
-| Google       |   ✅    |
-| YouTube      |   ✅    |
-| Amazon       |   ✅    |
-| DuckDuckGo   |   ✅    |
-| Facebook     |   🛣    |
-| Twitter      |   🛣    |
-| Bing         |   🚧    |
-| Yandex       |   🚧    |
-| Baidu        |   🛣    |
-
-
+| ------------- | ------ |
+| Google        | ✅      |
+| YouTube       | ✅      |
+| Amazon        | ✅      |
+| DuckDuckGo    | ✅      |
+| Facebook      | 🛣      |
+| Twitter       | 🛣      |
+| Bing          | 🚧      |
+| Yandex        | 🚧      |
+| Baidu         | 🛣      |
 
 ## Installation
 

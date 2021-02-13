@@ -1,4 +1,4 @@
-import { ServiceArgs } from '../services/index.ts';
+import { ServiceArgs } from "../services/index.ts";
 
 export function normalizeServiceArgs({ term, country, language }: ServiceArgs) {
   const t = encodeURIComponent(term);
@@ -9,6 +9,6 @@ export function normalizeServiceArgs({ term, country, language }: ServiceArgs) {
     t,
     c,
     l,
-    hl: `${c}-${l}`
-  }
-};
+    hl: `${c}-${l}`,
+  };
+}
