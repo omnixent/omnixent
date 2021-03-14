@@ -1,7 +1,7 @@
 import { Language } from "../languages/index.ts";
 import { Country } from "../countries/index.ts";
 
-type Service =
+export type Service =
   | "google"
   | "amazon"
   | "duckduckgo"
@@ -28,6 +28,14 @@ export type CallServiceArgs = {
   country: Country;
   service: Service;
 };
+
+export const availableServices: Service[] = [
+  "google",
+  "amazon",
+  "duckduckgo",
+  "bing",
+  "youtube",
+];
 
 export default async function callService(
   options: CallServiceArgs,
