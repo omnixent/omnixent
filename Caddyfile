@@ -1,9 +1,8 @@
-local.omnixent.com:443, local.omnixent.com:80 {
+localhost:443, localhost:80 {
   gzip
   cors
   log stdout
   errors stdout
-  skip_certificates
 
   proxy / omnixent-deno:8000 {
     transparent
