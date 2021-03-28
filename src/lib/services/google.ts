@@ -1,7 +1,7 @@
-import { ServiceArgs } from "./index.ts";
-import { normalizeServiceArgs } from "../utils/index.ts";
+import { ServiceArgs } from '.';
+import { normalizeServiceArgs } from '../utils';
 
-const endpoint = "https://www.google.com/complete/search";
+const endpoint = 'https://www.google.com/complete/search';
 
 export function formatURI(options: ServiceArgs): string {
   const { t, hl } = normalizeServiceArgs(options);
@@ -9,13 +9,13 @@ export function formatURI(options: ServiceArgs): string {
 }
 
 export function extractBody(response: string) {
-  const body = response
-    .replace(/^window\.google\.ac\.h\(/, "")
-    .replace(/\)$/, "");
+  const body = response.replace(/^window\.google\.ac\.h\(/, '').replace(/\)$/, '');
 
-  return JSON
-    .parse(body)
+  return JSON.parse(body)
     ?.flat()
     ?.flat()
-    ?.filter((el: any) => typeof el === "string");
+    ?.filter((el: any) => typeof el === 'string')
+    ?.map((term: string) => term.replace(/<b>/gi, ''))
+    ?.map((term: string) => term.replace(/<\/b>/gi, ''))
+    ?.map((term: string) => term.replace(/&#39;/gi, "'"));
 }

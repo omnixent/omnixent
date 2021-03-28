@@ -1,11 +1,13 @@
-FROM hayd/alpine-deno:1.8.1
+FROM node:14
 
-EXPOSE 8000
+EXPOSE 3000
 
 WORKDIR /app
 
-USER deno
-
 ADD . .
 
-CMD ["run", "--allow-net", "--allow-read", "src/main.ts"]
+RUN npm install
+RUN npm run build
+RUN ls
+
+CMD ["yarn", "run:docker"]

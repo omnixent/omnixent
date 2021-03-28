@@ -1,7 +1,7 @@
-import { ServiceArgs } from "./index.ts";
-import { normalizeServiceArgs } from "../utils/index.ts";
+import { ServiceArgs } from '.';
+import { normalizeServiceArgs } from '../utils';
 
-const endpoint = "https://duckduckgo.com/ac/";
+const endpoint = 'https://duckduckgo.com/ac/';
 
 export function formatURI(options: ServiceArgs): string {
   const { t, hl } = normalizeServiceArgs(options);
@@ -9,7 +9,5 @@ export function formatURI(options: ServiceArgs): string {
 }
 
 export function extractBody(response: string) {
-  return JSON
-    .parse(response)
-    ?.map(({ phrase }: any) => phrase);
+  return JSON.parse(response)?.map(({ phrase }: any) => phrase);
 }

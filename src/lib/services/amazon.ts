@@ -1,7 +1,7 @@
-import { ServiceArgs } from "./index.ts";
-import { normalizeServiceArgs } from "../utils/index.ts";
+import { ServiceArgs } from '.';
+import { normalizeServiceArgs } from '../utils';
 
-const endpoint = "https://completion.amazon.co.uk/api/2017/suggestions";
+const endpoint = 'https://completion.amazon.co.uk/api/2017/suggestions';
 
 export function formatURI(options: ServiceArgs): string {
   const { t, hl } = normalizeServiceArgs(options);
@@ -9,8 +9,5 @@ export function formatURI(options: ServiceArgs): string {
 }
 
 export function extractBody(response: string) {
-  return JSON
-    ?.parse(response)
-    ?.suggestions
-    ?.map(({ value }: any) => value);
+  return JSON?.parse(response)?.suggestions?.map(({ value }: any) => value);
 }

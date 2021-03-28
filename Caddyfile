@@ -1,10 +1,10 @@
-localhost:443, localhost:80 {
+localhost:9010, localhost:9011 {
   gzip
   cors
   log stdout
   errors stdout
 
-  proxy / omnixent-deno:8000 {
+  proxy / omnixent-node:3000 {
     transparent
   }
 }

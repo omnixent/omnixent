@@ -1,16 +1,20 @@
 version: '3.7'
 
 services:
-  deno:
-    container_name: omnixent-deno
+  node:
+    container_name: omnixent-node
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 8000:8000
+      - 3000:3000
     volumes:
       - ./:/app
     restart: unless-stopped
+    links:
+      - redis
+    environment:
+      - REDIS_URL=redis://cache
     networks:
       - caddynet
 
@@ -20,14 +24,15 @@ services:
     cap_add:
       - CAP_NET_BIND_SERVICE
     ports:
-      - 80:80
-      - 443:443
+      - 9010:9010
+      - 9011:9011
     expose:
-      - 443
+      - 9010
+      - 9011
     links:
-      - deno
+      - node
     depends_on:
-      - deno
+      - node
     volumes:
       - ./Caddyfile:/etc/Caddyfile
     command: -conf /etc/Caddyfile
@@ -36,6 +41,12 @@ services:
     restart: always
     networks:
       - caddynet
+
+    redis:
+      image: "redis:alpine"
+      container_name: omnixent-cache
+      expose:
+        - 6379
 
 networks:
   caddynet:

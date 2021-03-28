@@ -53,14 +53,14 @@ the following APIs (list will be updated as soon as new features will roll out).
 
 | Search Engine | Status |
 | ------------- | ------ |
-| Google        | ✅      |
-| YouTube       | ✅      |
-| Amazon        | ✅      |
-| DuckDuckGo    | ✅      |
+| Google        | ✅     |
+| YouTube       | ✅     |
+| Amazon        | ✅     |
+| DuckDuckGo    | ✅     |
 | Facebook      | 🛣      |
 | Twitter       | 🛣      |
-| Bing          | 🚧      |
-| Yandex        | 🚧      |
+| Bing          | 🚧     |
+| Yandex        | 🚧     |
 | Baidu         | 🛣      |
 
 ## Installation

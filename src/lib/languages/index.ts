@@ -1,15 +1,10 @@
-import de from "./de.ts";
-import en from "./en.ts";
-import fr from "./fr.ts";
-import it from "./it.ts";
-import pt from "./pt.ts";
+import de from './de';
+import en from './en';
+import fr from './fr';
+import it from './it';
+import pt from './pt';
 
-export type Language =
-  | "de"
-  | "en"
-  | "fr"
-  | "it"
-  | "pt";
+export type Language = 'de' | 'en' | 'fr' | 'it' | 'pt';
 
 export default {
   de,
