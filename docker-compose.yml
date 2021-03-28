@@ -14,7 +14,7 @@ services:
     links:
       - redis
     environment:
-      - REDIS_URL=redis://cache
+      - REDIS_URL=redis://redis:6379
     networks:
       - caddynet
 
@@ -42,11 +42,13 @@ services:
     networks:
       - caddynet
 
-    redis:
-      image: "redis:alpine"
-      container_name: omnixent-cache
-      expose:
-        - 6379
+  redis:
+    image: "redis:alpine"
+    container_name: omnixent-cache
+    expose:
+      - 6379
+    networks:
+      - caddynet
 
 networks:
   caddynet:

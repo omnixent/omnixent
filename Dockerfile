@@ -8,6 +8,5 @@ ADD . .
 
 RUN npm install
 RUN npm run build
-RUN ls
 
 CMD ["yarn", "run:docker"]
