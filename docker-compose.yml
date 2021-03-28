@@ -5,15 +5,14 @@ services:
     container_name: omnixent-node
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./docker/omnixent/Dockerfile
     ports:
       - 3000:3000
-    volumes:
-      - ./:/app
     restart: unless-stopped
     links:
       - redis
     environment:
+      - NODE_ENV=production
       - REDIS_URL=redis://redis:6379
     networks:
       - caddynet

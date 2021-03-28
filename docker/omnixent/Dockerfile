@@ -16,4 +16,8 @@ RUN yarn install
 COPY --chown=node:node . .
 RUN yarn build
 
+RUN pwd
+RUN ls
+RUN ls dist
+
 CMD [ "node", "dist/main.js" ]
