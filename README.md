@@ -1,5 +1,7 @@
 <img src="/docs/logo/omnixent.png" width="100%" />
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 **Omnixent** is a community effort to build a simple API which allows you to
 understand what people searches on search engines, social network etc.
 
@@ -53,14 +55,14 @@ the following APIs (list will be updated as soon as new features will roll out).
 
 | Search Engine | Status |
 | ------------- | ------ |
-| Google        | ✅      |
-| YouTube       | ✅      |
-| Amazon        | ✅      |
-| DuckDuckGo    | ✅      |
+| Google        | ✅     |
+| YouTube       | ✅     |
+| Amazon        | ✅     |
+| DuckDuckGo    | ✅     |
 | Facebook      | 🛣      |
 | Twitter       | 🛣      |
-| Bing          | 🚧      |
-| Yandex        | 🚧      |
+| Bing          | 🚧     |
+| Yandex        | 🚧     |
 | Baidu         | 🛣      |
 
 ## Installation

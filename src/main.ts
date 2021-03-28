@@ -1,13 +1,14 @@
-import { config } from "https://deno.land/x/dotenv/mod.ts";
+import server from './lib/server';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const { ENV = "server" } = config();
+const { ENV = 'server' } = process.env;
 
 switch (ENV) {
-  case "lambda":
-    console.log("Not implemented yet!");
+  case 'lambda':
+    console.log('Not implemented yet!');
     break;
   default:
-    const { initServer } = await import("./lib/server/index.ts");
-    initServer();
+    server();
     break;
 }

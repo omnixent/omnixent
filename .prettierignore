@@ -1,0 +1,5 @@
+node_modules
+.prettierrc.js
+docs
+.vscode
+.github

@@ -1,21 +1,24 @@
-import { Application } from "https://deno.land/x/oak/mod.ts";
-import { config } from "https://deno.land/x/dotenv/mod.ts";
-import apiRoutes from "./routes/api.ts";
+import express from 'express';
+import cors from 'cors';
+import compression from 'compression';
+import bodyParser from 'body-parser';
+import * as dotenv from 'dotenv';
+import apiV1Routes from './routes/v1/public';
 
-const { PORT = "8000" } = config();
+dotenv.config();
 
-export async function initServer() {
-  const app = new Application();
+export default function init() {
+  const app = express();
+  const port = process.env.PORT || 3000;
 
-  app.use(async (ctx, next) => {
-    const start = Date.now();
-    await next();
-    const ms = Date.now() - start;
-    ctx.response.headers.set("X-Response-Time", `${ms}ms`);
+  app.use(cors());
+  app.use(compression());
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+
+  app.use('/v1', apiV1Routes);
+
+  app.listen(port, () => {
+    console.log(`Omnixent is running at http://localhost:${port}`);
   });
-
-  app.use(apiRoutes.routes());
-  app.use(apiRoutes.allowedMethods());
-
-  await app.listen({ port: parseInt(PORT) });
 }

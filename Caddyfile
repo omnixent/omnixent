@@ -1,0 +1,10 @@
+localhost:9010, localhost:9011 {
+  gzip
+  cors
+  log stdout
+  errors stdout
+
+  proxy / omnixent-node:3000 {
+    transparent
+  }
+}
