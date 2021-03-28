@@ -1,5 +1,5 @@
-import { ServiceArgs } from "./index.ts";
-import { normalizeServiceArgs } from "../utils/index.ts";
+import { ServiceArgs } from "./index";
+import { normalizeServiceArgs } from "../utils";
 
 const endpoint = "https://api.bing.com/osjson.aspx";
 
