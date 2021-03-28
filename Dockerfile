@@ -1,12 +1,19 @@
-FROM node:14
-
-EXPOSE 3000
+FROM node:lts-alpine
 
 WORKDIR /app
 
-ADD . .
+RUN chmod -R 755 /app && \
+  chown -R node:node  /app
 
-RUN npm install
-RUN npm run build
+RUN apk add --no-cache bash
 
-CMD ["yarn", "run:docker"]
+USER node
+
+COPY --chown=node:node ./package*.json ./
+COPY --chown=node:node ./yarn.lock ./
+RUN yarn install
+
+COPY --chown=node:node . .
+RUN yarn build
+
+CMD [ "node", "dist/main.js" ]

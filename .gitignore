@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=osx,linux,elixir,erlang
 
 node_modules
+dist
 
 ### Elixir ###
 /_build
