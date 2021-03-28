@@ -4,38 +4,7 @@
 
 node_modules
 dist
-
-### Elixir ###
-/_build
-/cover
-/deps
-/doc
-/.fetch
-erl_crash.dump
-*.ez
-*.beam
-/config/*.secret.exs
-.elixir_ls/
-.mnesia
-
-### Elixir Patch ###
-
-### Erlang ###
-.eunit
-*.o
-*.plt
-.concrete/DEV_MODE
-
-# rebar 2.x
-.rebar
-rel/example_project
-ebin/*.beam
-deps
-
-# rebar 3
-.rebar3
-_build/
-_checkouts/
+coverage
 
 ### Linux ###
 *~

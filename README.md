@@ -4,6 +4,7 @@
 
 **Omnixent** is a community effort to build a simple API which allows you to
 understand what people searches on search engines, social network etc.
+
 ## Docs
 
 - [REST API docs](https://docs.oss.omnixent.com)
@@ -26,9 +27,9 @@ the following APIs (list will be updated as soon as new features roll out).
 | DuckDuckGo    | ✅     |
 | Bing          | ✅     |
 | Yandex        | 🚧     |
-| Facebook      | 🛣     |
-| Twitter       | 🛣     |
-| Baidu         | 🛣     |
+| Facebook      | 🛣      |
+| Twitter       | 🛣      |
+| Baidu         | 🛣      |
 
 ## Installation
 

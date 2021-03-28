@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing google extractBody 1`] = `
+Array [
+  "node.js",
+  "node.js download",
+  "node.js mongodb",
+  "node.js tutorial",
+  "node.js fs",
+  "node.js mysql",
+  "node.js ubuntu",
+  "node.js project",
+]
+`;
+
+exports[`Testing google extractBody 2`] = `
+Array [
+  "blue jeans brands",
+  "blue jeans brands list",
+  "blue jeans brand names",
+]
+`;

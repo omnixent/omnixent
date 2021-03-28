@@ -3,3 +3,6 @@ node_modules
 docs
 .vscode
 .github
+__tests__
+dist
+coverage

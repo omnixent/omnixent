@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing google extractBody 1`] = `
+Array [
+  "node.js",
+  "node.js download",
+  "node.js",
+  "node.js server-side javascript",
+  "node.js tutorial",
+  "node.js cos'è",
+  "node.js express",
+  "node.js windows 7",
+  "node.js server-side javascript virus",
+  "node.js path",
+  "node.js wikipedia",
+  "node.js what is",
+  "node.js require",
+  "node.js docker",
+  "node.js websocket",
+]
+`;
+
+exports[`Testing google extractBody 2`] = `
+Array [
+  "blue jeans brands",
+  "blue jeans brands",
+  "blue jeans brands from the 90s",
+  "blue jeans brands list",
+  "top blue jeans brands",
+  "expensive blue jeans brands",
+  "target blue jeans brands",
+  "mens blue jeans brands",
+  "western blue jeans brands",
+  "famous blue jeans brands",
+  "sargent blue jeans brands",
+]
+`;

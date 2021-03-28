@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing google extractBody 1`] = `
+Array [
+  "node.js",
+  "node.js download",
+  "node.js update",
+  "node.js fs",
+  "node.js express",
+  "node.js cos'e",
+  "node.js example",
+  "node.js mysql",
+  "node.js version",
+  "node.js hello world",
+  "node.js raspberry pi",
+  "node.js server-side javascript",
+]
+`;
+
+exports[`Testing google extractBody 2`] = `
+Array [
+  "blue jeans brands",
+  "blue jeans brands list",
+  "blue jeans brand names",
+  "blue jean brands for men",
+  "blue jean brands for women",
+  "blue jean brands of the 1960's and 70's",
+]
+`;

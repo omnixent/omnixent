@@ -1,7 +1,7 @@
-import { ServiceArgs } from "./index";
-import { normalizeServiceArgs } from "../utils";
+import { ServiceArgs } from './index';
+import { normalizeServiceArgs } from '../utils';
 
-const endpoint = "https://api.bing.com/osjson.aspx";
+const endpoint = 'https://api.bing.com/osjson.aspx';
 
 export function formatURI(options: ServiceArgs): string {
   const { t, c, l } = normalizeServiceArgs(options);
@@ -9,7 +9,5 @@ export function formatURI(options: ServiceArgs): string {
 }
 
 export function extractBody(response: string) {
-  return JSON
-    .parse(response)[1]
-    ?.map((phrase: string) => phrase);
+  return JSON.parse(response)?.[1]?.map((phrase: string) => phrase);
 }

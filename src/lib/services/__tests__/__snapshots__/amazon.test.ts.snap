@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing google extractBody 1`] = `
+Array [
+  "node.js",
+  "node.js design patterns",
+  "node.js italiano",
+  "node.js. guida completa per lo sviluppatore",
+  "node.js o'reilly",
+]
+`;
+
+exports[`Testing google extractBody 2`] = `
+Array [
+  "versace blue jeans profumo uomo",
+  "blue jeans uomo",
+  "blue jeans",
+  "blue jeans versace",
+  "blue jeans franco126",
+  "blue jeans donna",
+  "blue jeans libri",
+  "blue jeans franco126 vinile",
+  "blue jeans cable",
+  "blue jeans vinile",
+]
+`;

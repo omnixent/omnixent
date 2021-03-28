@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing normalizeServiceArgs function 1`] = `
+Object {
+  "c": "it",
+  "hl": "it-DE",
+  "l": "DE",
+  "t": "javascript",
+}
+`;
+
+exports[`Testing normalizeServiceArgs function 2`] = `
+Object {
+  "c": "us",
+  "hl": "us-EN",
+  "l": "EN",
+  "t": "blue%20jeans",
+}
+`;
