@@ -5,3 +5,4 @@ dist
 .git
 *Dockerfile*
 *docker-compose*
+env

@@ -3,7 +3,8 @@ import cors from 'cors';
 import compression from 'compression';
 import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
-import apiV1Routes from './routes/v1/public';
+import apiV1PublicRoutes from './routes/v1/public';
+import apiV1PrivateRoutes from './routes/v1/private';
 
 dotenv.config();
 
@@ -16,7 +17,8 @@ export default function init() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
-  app.use('/v1', apiV1Routes);
+  app.use('/v1', apiV1PublicRoutes);
+  app.use('/v2', apiV1PrivateRoutes);
 
   app.listen(port, () => {
     console.log(`Omnixent is running at http://localhost:${port}`);

@@ -9,8 +9,8 @@ const client = redis.createClient({
   url: process.env.REDIS_URL,
 });
 
-export function getRedisKey(input: CallServiceArgs): string {
-  return [input.service, input.term, input.country, input.language].join(':');
+export function getRedisKey({ service, term, country, language }: CallServiceArgs): string {
+  return [service, term, country, language].join(':');
 }
 
 export const get = promisify(client.get).bind(client);
