@@ -6,6 +6,8 @@ import pt from './pt';
 
 export type Language = 'de' | 'en' | 'fr' | 'it' | 'pt';
 
+export const availableLanguages = ['de', 'en', 'fr', 'it', 'pt'];
+
 export default {
   de,
   en,

@@ -6,6 +6,7 @@ import responseTime from 'response-time';
 import * as dotenv from 'dotenv';
 import apiV1PublicRoutes from './routes/v1/public';
 import apiV1PrivateRoutes from './routes/v1/private';
+import apiV1AvailabilityRoutes from './routes/v1/availability';
 
 dotenv.config();
 
@@ -20,7 +21,8 @@ export default function init() {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.use('/v1', apiV1PublicRoutes);
-  app.use('/v2', apiV1PrivateRoutes);
+  app.use('/v1', apiV1PrivateRoutes);
+  app.use('/v1', apiV1AvailabilityRoutes);
   app.use('/', (_, res) => res.json({ success: true }));
 
   app.listen(port, () => {
