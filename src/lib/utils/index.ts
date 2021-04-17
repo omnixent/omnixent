@@ -12,3 +12,7 @@ export function normalizeServiceArgs({ term, country, language }: ServiceArgs) {
     hl: `${c}-${l}`,
   };
 }
+
+export const groupBy = (list: any[], key: string) =>
+  list.reduce((hash, obj) =>
+    ({...hash, [obj[key]]:( hash[obj[key]] || [] ).concat(obj)}), {});

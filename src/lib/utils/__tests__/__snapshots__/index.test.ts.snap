@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Testing groupBy function 1`] = `
+Object {
+  "apple": Array [
+    Object {
+      "make": "apple",
+      "product": "ipod",
+    },
+    Object {
+      "make": "apple",
+      "product": "iphone",
+    },
+  ],
+  "samsung": Array [
+    Object {
+      "make": "samsung",
+      "product": "galaxy",
+    },
+  ],
+  "xiaomi": Array [
+    Object {
+      "make": "xiaomi",
+      "product": "mi",
+    },
+  ],
+}
+`;
+
 exports[`Testing normalizeServiceArgs function 1`] = `
 Object {
   "c": "it",
