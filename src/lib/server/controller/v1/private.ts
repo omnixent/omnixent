@@ -56,7 +56,6 @@ export default async function privateController(req: Request, res: Response) {
   }
 
   const result = await callService(params);
-  console.log(result)
 
   await redis.setex(redis.getRedisKey(params), redis.cacheExpTime, JSON.stringify(result));
 
