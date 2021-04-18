@@ -1,7 +1,5 @@
 export default {
-  term: [
-    '@'
-  ],
+  term: ['@'],
   questions: [
     'pourquoi @',
     'lorsque @',
@@ -13,31 +11,19 @@ export default {
     'sans pour autant @',
     'comment @',
   ],
-  verbs: [
-    '@ est',
-    '@ n\'est pas',
-    '@ fais',
-    '@ ne fait pas',
-    '@ pouvez',
-  ],
+  verbs: ['@ est ', "@ n'est pas ", '@ fais ', '@ ne fait pas ', '@ pouvez '],
   prepositions: [
-    '@ de',
-    '@ à',
-    '@ de',
-    '@ dans',
-    '@ avec',
-    '@ au',
-    '@ pour',
-    '@ parmi',
-    '@ entre'
+    '@ de ',
+    '@ à ',
+    '@ de ',
+    '@ dans ',
+    '@ avec ',
+    '@ au ',
+    '@ pour ',
+    '@ parmi ',
+    '@ entre ',
   ],
-  comparison: [
-    '@ vs',
-    '@ contre',
-    '@ aimer',
-    '@ et',
-    '@ ou',
-  ],
+  comparison: ['@ vs ', '@ contre ', '@ aimer ', '@ et ', '@ ou '],
   initials: [
     '@ a',
     '@ b',
@@ -65,5 +51,5 @@ export default {
     '@ x',
     '@ y',
     '@ z',
-  ]
-}
+  ],
+};

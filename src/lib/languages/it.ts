@@ -1,41 +1,19 @@
 export default {
-  term: [
-    '@'
-  ],
-  questions: [
-    'perché @',
-    'quando @',
-    'quale @',
-    'dove @',
-    'chi @',
-    'senza @',
-    'come @',
-  ],
-  verbs: [
-    '@ è',
-    '@ non è',
-    '@ fa',
-    '@ non fa',
-    '@ può',
-  ],
+  term: ['@'],
+  questions: ['perché @ ', 'quando @ ', 'quale @ ', 'dove @ ', 'chi @ ', 'senza @ ', 'come @'],
+  verbs: ['@ è', '@ non è', '@ fa', '@ non fa', '@ può'],
   prepositions: [
-    '@ di',
-    '@ a',
-    '@ da',
-    '@ in',
-    '@ con',
-    '@ su',
-    '@ per',
-    '@ tra',
-    '@ fra'
+    '@ di ',
+    '@ a ',
+    '@ da ',
+    '@ in ',
+    '@ con ',
+    '@ su ',
+    '@ per ',
+    '@ tra ',
+    '@ fra ',
   ],
-  comparison: [
-    '@ contro',
-    '@ come',
-    '@ vs',
-    '@ e',
-    '@ o',
-  ],
+  comparison: ['@ contro ', '@ come ', '@ vs ', '@ e ', '@ o '],
   initials: [
     '@ a',
     '@ b',
@@ -63,5 +41,5 @@ export default {
     '@ x',
     '@ y',
     '@ z',
-  ]
-}
+  ],
+};
