@@ -2,11 +2,11 @@ import { Request, Response } from 'express';
 import callService, { CallServiceArgs, Service, availableServices } from '../../../services';
 import { Language } from '../../../languages';
 import { Country, availableCountries } from '../../../countries';
-import * as redis from '../../../redis';
+import Redis from '../../../redis';
 
 async function getCachedResult(params: CallServiceArgs) {
-  const key = redis.getRedisKey(params);
-  return redis.get(key);
+  const key = Redis.getRedisKey(params);
+  return Redis.get(key);
 }
 
 export default async function privateController(req: Request, res: Response) {
@@ -49,6 +49,7 @@ export default async function privateController(req: Request, res: Response) {
     if (cachedResult) {
       res.status(200).json({
         success: true,
+        cached: true,
         result: JSON.parse(cachedResult),
       });
       return;
@@ -57,10 +58,11 @@ export default async function privateController(req: Request, res: Response) {
 
   const result = await callService(params);
 
-  await redis.setex(redis.getRedisKey(params), redis.cacheExpTime, JSON.stringify(result));
+  await Redis.setex(Redis.getRedisKey(params), undefined, JSON.stringify(result));
 
   res.status(200).json({
     success: true,
+    cached: false,
     result: result,
   });
 }

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import callService from '../../../services';
-import * as redis from '../../../redis';
+import Redis from '../../../redis';
 
 const missingTermError = {
   success: false,
@@ -8,7 +8,7 @@ const missingTermError = {
 };
 
 function getKey(term: string): string {
-  return redis.getRedisKey({
+  return Redis.getRedisKey({
     term,
     service: 'google',
     language: 'en',
@@ -18,7 +18,7 @@ function getKey(term: string): string {
 
 async function getCachedResult(term: string) {
   const key = getKey(term);
-  return redis.get(key);
+  return Redis.get(key);
 }
 
 export default async function publicController(req: Request, res: Response) {
@@ -43,7 +43,7 @@ export default async function publicController(req: Request, res: Response) {
     country: 'us',
   });
 
-  await redis.setex(getKey(t), redis.cacheExpTime, JSON.stringify(result));
+  await Redis.setex(getKey(t), undefined, JSON.stringify(result));
 
   res.status(200).json({
     success: true,
