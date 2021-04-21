@@ -11,8 +11,8 @@ interface RedisCache {
 }
 
 class Redis {
+  enableRedis = false;
   private cacheExpTime = '86400000';
-  private enableRedis = false;
   private client: redis.RedisClient | undefined;
 
   constructor({ cacheExpTime }: RedisCache) {

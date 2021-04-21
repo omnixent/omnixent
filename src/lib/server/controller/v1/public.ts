@@ -31,6 +31,7 @@ export default async function publicController(req: Request, res: Response) {
   if (cachedResult) {
     res.status(200).json({
       success: true,
+      cached: true,
       result: JSON.parse(cachedResult),
     });
     return;
@@ -38,15 +39,16 @@ export default async function publicController(req: Request, res: Response) {
 
   const result = await callService({
     term: t,
-    service: 'google',
     language: 'en',
     country: 'us',
+    service: 'google',
   });
 
   await Redis.setex(getKey(t), undefined, JSON.stringify(result));
 
   res.status(200).json({
     success: true,
+    cached: false,
     result: result,
   });
 }

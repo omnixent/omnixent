@@ -25,7 +25,11 @@ export default function init() {
   app.use('/v1', apiV1AvailabilityRoutes);
   app.use('/', (_, res) => res.json({ success: true }));
 
-  app.listen(port, () => {
-    console.log(`Omnixent is running at http://localhost:${port}`);
-  });
+  if (process.env.NODE_ENV !== 'test') {
+    app.listen(port, () => {
+      console.log(`Omnixent is running at http://localhost:${port}`);
+    });
+  }
+
+  return app;
 }

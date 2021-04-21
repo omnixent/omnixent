@@ -16,7 +16,7 @@
     "lint": "tslint --fix .",
     "run:docker": "node ./src/main.js",
     "semantic-release": "semantic-release",
-    "test": "jest --coverage",
+    "test": "NODE_ENV=test jest --coverage",
     "upgrade-interactive": "npm-check --update"
   },
   "dependencies": {
@@ -32,7 +32,8 @@
     "node-fetch": "^2.6.1",
     "rambda": "^6.7.0",
     "redis": "^3.0.2",
-    "response-time": "^2.3.2"
+    "response-time": "^2.3.2",
+    "supertest": "^6.1.3"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
@@ -44,6 +45,7 @@
     "@types/node-fetch": "^2.5.8",
     "@types/redis": "^2.8.28",
     "@types/response-time": "^2.3.4",
+    "@types/supertest": "^2.0.11",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^5.2.0",
