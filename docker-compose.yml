@@ -13,7 +13,12 @@ services:
       - redis
     environment:
       - NODE_ENV=production
+      - REDIS_ENABLED=true
       - REDIS_URL=redis://redis:6379
+      - ENABLE_PUBLIC_API=true
+      - PORT=3000
+      - DEFAULT_CACHE_EXPIRE_TIME=86400000
+      - OMNIXENT_JWT_SECRET={"type":"HS256","key":"cKKgafNNj7vPsA4tDyqB8r9WXpEZPfru"} # CHANGE THIS KEY BEFORE STARTING DOCKER-COMPOSE!
     networks:
       - caddynet
 
@@ -42,7 +47,7 @@ services:
       - caddynet
 
   redis:
-    image: "redis:alpine"
+    image: 'redis:alpine'
     container_name: omnixent-cache
     expose:
       - 6379

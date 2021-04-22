@@ -7,4 +7,6 @@ localhost:9010, localhost:9011 {
   proxy / omnixent-node:3000 {
     transparent
   }
+
+  header / Access-Control-Allow-Headers x-omnixent-auth
 }

@@ -14,14 +14,7 @@ export default function init() {
   const app = express();
   const port = process.env.PORT || 3000;
 
-  app.use(
-    cors({
-      origin: true,
-      credentials: true,
-      allowedHeaders: '*'
-    }),
-  );
-
+  app.use(cors());
   app.use(compression());
   app.use(responseTime());
   app.use(bodyParser.json());
