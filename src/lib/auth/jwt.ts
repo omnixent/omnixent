@@ -20,8 +20,7 @@ export default function isAuthorized(authHeader: string) {
   if (!key) throw `Invalid JWT configuration. Missing or invalid key.`;
   if (!type) throw `Invalid JWT configuration. Missing or invalid type.`;
 
-  const token = authHeader.replace('Bearer ', '');
-  const JWTContent = jwt.verify(token, key, { algorithms: type }) as JWTContent;
+  const JWTContent = jwt.verify(authHeader, key, { algorithms: type }) as JWTContent;
 
   return Boolean(JWTContent?.['omx-enable-query']);
 }

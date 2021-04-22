@@ -13,7 +13,7 @@ async function getCachedResult(params: CallServiceArgs) {
 export default async function privateController(req: Request, res: Response) {
   const { term, service, language = 'en', country = 'us', fresh = false } = req.query;
 
-  const auth = req.header('Authorization');
+  const auth = req.header('x-omnixent-auth');
 
   if (!auth || !isAuthorized(auth)) {
     res.status(401).json({
