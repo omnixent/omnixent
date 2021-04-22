@@ -18,6 +18,7 @@ export default function init() {
     cors({
       origin: true,
       credentials: true,
+      allowedHeaders: '*'
     }),
   );
 
