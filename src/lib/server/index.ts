@@ -14,8 +14,13 @@ export default function init() {
   const app = express();
   const port = process.env.PORT || 3000;
 
-  app.use(cors());
-  app.use((req, res, next) => {
+  app.use(
+    cors({
+      origin: true,
+      credentials: true,
+    }),
+  );
+  app.use((_, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
