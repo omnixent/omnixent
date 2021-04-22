@@ -13,7 +13,7 @@ export default async function privateController(req: Request, res: Response) {
   const { term, service, language = 'en', country = 'us', fresh = false } = req.query;
 
   if (!term || !service) {
-    res.status(401).json({
+    res.status(422).json({
       success: false,
       reason: 'Missing required parameter(s): term/service',
     });
@@ -21,7 +21,7 @@ export default async function privateController(req: Request, res: Response) {
   }
 
   if (!availableServices.includes(service as Service)) {
-    res.status(401).json({
+    res.status(422).json({
       success: false,
       reason: `Service ${service} is not available`,
     });
@@ -29,7 +29,7 @@ export default async function privateController(req: Request, res: Response) {
   }
 
   if (!availableCountries.includes(country as Country)) {
-    res.status(401).json({
+    res.status(422).json({
       success: false,
       reason: `Country ${country} is not available`,
     });
