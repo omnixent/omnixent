@@ -8,7 +8,7 @@ process.env.OMNIXENT_JWT_SECRET = '{"type":"HS256","key":"D8CcNcPvNftvyPS6fKAgT6
 const { key } = JSON.parse(process.env.OMNIXENT_JWT_SECRET);
 
 const testJWTEnabled = jwt.sign({ 'omx-enable-query': true }, key);
-console.log(testJWTEnabled);
+
 const testJWTDisabled = jwt.sign({ 'omx-enable-query': false }, key);
 
 const header = (jwt: string) => `Bearer ${jwt}`;
