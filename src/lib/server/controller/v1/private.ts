@@ -3,6 +3,7 @@ import callService, { CallServiceArgs, Service, availableServices } from '../../
 import { Language } from '../../../languages';
 import { Country, availableCountries } from '../../../countries';
 import Redis from '../../../redis';
+import isAuthorized from '../../../auth/jwt';
 
 async function getCachedResult(params: CallServiceArgs) {
   const key = Redis.getRedisKey(params);
@@ -11,6 +12,16 @@ async function getCachedResult(params: CallServiceArgs) {
 
 export default async function privateController(req: Request, res: Response) {
   const { term, service, language = 'en', country = 'us', fresh = false } = req.query;
+
+  const auth = req.header('Authorization');
+
+  if (!auth || !isAuthorized(auth)) {
+    res.status(401).json({
+      success: false,
+      reason: 'Unauthorized',
+    });
+    return;
+  }
 
   if (!term || !service) {
     res.status(422).json({
