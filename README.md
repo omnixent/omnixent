@@ -8,7 +8,9 @@
 **Omnixent** is a community effort to build a simple API which allows you to
 understand what people searches on search engines, social network etc.
 
-<img src="/docs/intro/omx-demo-video.gif" />
+<p align="center">
+  <img src="/docs/intro/omx-demo-video.gif" />
+</p>
 
 ## Status
 
