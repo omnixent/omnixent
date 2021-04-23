@@ -8,10 +8,7 @@
 **Omnixent** is a community effort to build a simple API which allows you to
 understand what people searches on search engines, social network etc.
 
-## Docs
-
-- [REST API docs](https://docs.oss.omnixent.com)
-- [Project Architecture](https://architecture.omnixent.com)
+<img src="/docs/intro/omx-demo-video.gif" />
 
 ## Status
 
@@ -36,7 +33,7 @@ the following APIs (list will be updated as soon as new features roll out).
 
 ## Installation
 
-Installation guide out soon.
+Follow the [installation guide](https://omnixent.github.io/docs/#/deploy/docker-compose).
 
 ## License
 
