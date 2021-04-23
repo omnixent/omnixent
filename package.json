@@ -16,7 +16,7 @@
     "lint": "tslint --fix .",
     "run:docker": "node ./src/main.js",
     "semantic-release": "semantic-release",
-    "test": "NODE_ENV=test jest --coverage",
+    "test": "export $(grep -v '^#' .env.test | xargs) && jest --coverage",
     "upgrade-interactive": "npm-check --update"
   },
   "dependencies": {

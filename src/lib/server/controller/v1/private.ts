@@ -3,7 +3,7 @@ import callService, { CallServiceArgs, Service, availableServices } from '../../
 import { Language } from '../../../languages';
 import { Country, availableCountries } from '../../../countries';
 import Redis from '../../../redis';
-import isAuthorized from '../../../auth/jwt';
+import isAuthorized from '../../../auth';
 
 async function getCachedResult(params: CallServiceArgs) {
   const key = Redis.getRedisKey(params);
@@ -15,10 +15,19 @@ export default async function privateController(req: Request, res: Response) {
 
   const auth = req.header('x-omnixent-auth');
 
-  if (!auth || !isAuthorized(auth)) {
+  try {
+    if (!auth || !isAuthorized(auth)) {
+      res.status(401).json({
+        success: false,
+        reason: 'Unauthorized',
+      });
+      return;
+    }
+  } catch (e) {
+    console.log(e);
     res.status(401).json({
       success: false,
-      reason: 'Unauthorized',
+      reason: e.message,
     });
     return;
   }

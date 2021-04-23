@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing JWT authorization Should throw an error because of wrong key configuration 1`] = `"invalid signature"`;
