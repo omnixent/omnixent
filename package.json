@@ -32,7 +32,7 @@
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.1",
     "rambda": "^6.7.0",
-    "redis": "^3.0.2",
+    "redis": "^3.1.1",
     "response-time": "^2.3.2",
     "supertest": "^6.1.3"
   },
